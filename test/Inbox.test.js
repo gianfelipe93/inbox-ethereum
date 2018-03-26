@@ -9,6 +9,7 @@ const {
     bytecode
 } = require('../compile')
 const INITIAL_STRING = "Hi There!"
+const NEW_MESSAGE = "New message"
 
 let accounts;
 let inbox;
@@ -39,5 +40,14 @@ describe('Inbox contract', () => {
     it('has a default message', async () => {
         const message = await inbox.methods.message().call()
         assert.equal(message, INITIAL_STRING)
+    })
+
+    it('can change the message', async () => {
+        await inbox.methods.setMessage(NEW_MESSAGE).send({
+            from: accounts[0]
+        })
+
+        const message = await inbox.methods.message().call()
+        assert.equal(message, NEW_MESSAGE)
     })
 })
