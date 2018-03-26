@@ -5,9 +5,10 @@ const {
     bytecode
 } = require('./compile')
 const INITIAL_MESSAGE = "Hello World"
+const ACCOUNT_MNEMONIC = ""
 
 const provider = new HDWalletProvider(
-    'mixed garment pencil ill thrive kid thought shiver runway modify uncover effort',
+    ACCOUNT_MNEMONIC,
     'https://rinkeby.infura.io/0cR68gmvGMTNHYrftGJs'
 )
 
